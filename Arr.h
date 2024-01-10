@@ -6,7 +6,7 @@ class Arr {
 public:
 	Arr() = default;
 	
-	int insert(int length);
+	int insert(int lengt);
 	void insert_N();
 	void insert_M();
 	void init_arr();

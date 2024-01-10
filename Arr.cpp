@@ -6,14 +6,13 @@
 
 int Arr::insert(int lenght){
 	Uni_Input<int> inp('0', '9');
-	std::cout << " (от 2 до " << lenght <<"): ";
 	return inp.input();
 }
 
 void Arr::insert_N(){
 	bool check = false;
 	while (!check) {
-		std::cout << "\n Введите количество элементов массива которое делится без остатка";
+		std::cout << "\n Введите количество элементов массива, не более 100 которое делится без остатка: ";
 		_N = insert(100);
 		if (_N < 2 || _N > 100) {
 			std::cout << "\n Значение за пределами диапазона!\n";
@@ -39,7 +38,12 @@ void Arr::insert_N(){
 void Arr::insert_M(){
 	bool check = false;
 	while (!check) {
-		std::cout << "\n Введите количество потоков";
+		std::cout << "\n Выберите количество потоков:\n ->";
+		for (int i = _N - 1; i > 2; i--) {
+			if (_N % i == 0) std::cout << " |" << i;
+			if (i == 3) std::cout << "| \n -> ";
+		}
+
 		_M = insert(_N);
 		if (_M < 2 || _M >= _N) {
 			std::cout << "\n Значение за пределами диапазона!\n";
