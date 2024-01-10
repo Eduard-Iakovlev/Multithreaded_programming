@@ -1,5 +1,6 @@
 #include <chrono>
 #include <thread>
+#include <time.h>
 #include "Arr.h"
 #include "Insert.h"
 #include "RND.h"
@@ -108,6 +109,20 @@ void Arr::show_arr_mass(){
 		std::cout << std::endl << " ";
 	}
 	std::cout << "\n ----------------------------------- " << std::endl;
+}
+
+void Arr::one_flow(){
+	clock_t start, end;
+	double time = 0;
+	start = clock();
+	int sum = 0;
+	for (int i = 0; i != _arr.size(); i++) {
+		sum += _arr[i];
+	}
+	std::cout << "\n Сумма всех членов составляет - " << sum << std::endl << " ";
+	end = clock();
+	time = ((double)end - (double)start) / ((double) CLOCKS_PER_SEC);
+	std::cout << "\n Время выполнения в одном потоке: " << time << std::endl;
 }
 
 void Arr::pause(){

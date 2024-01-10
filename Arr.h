@@ -13,6 +13,7 @@ public:
 	void init_arr_mass();
 	void show_arr();
 	void show_arr_mass();
+	void one_flow();
 
 	void pause();
 

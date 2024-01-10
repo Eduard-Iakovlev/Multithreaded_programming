@@ -14,5 +14,11 @@ int main(){
 	arr.init_arr_mass();
 	arr.show_arr();
 	arr.show_arr_mass();
+	arr.one_flow();
 
+	SYSTEM_INFO sysinfo;
+	GetSystemInfo(&sysinfo);
+
+	int numCPU = sysinfo.dwNumberOfProcessors;
+	std::cout << "\n Количество ядер процессора " << numCPU << std::endl;
 }
