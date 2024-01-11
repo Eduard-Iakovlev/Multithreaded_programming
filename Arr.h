@@ -14,6 +14,8 @@ public:
 	void show_arr();
 	void show_arr_mass();
 	void one_flow();
+	int flow(std::vector<int> arr);
+	void multi_flow();
 
 	void pause();
 

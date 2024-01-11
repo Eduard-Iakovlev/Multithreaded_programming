@@ -15,6 +15,7 @@ int main(){
 	arr.show_arr();
 	arr.show_arr_mass();
 	arr.one_flow();
+	arr.multi_flow();
 
 	SYSTEM_INFO sysinfo;
 	GetSystemInfo(&sysinfo);

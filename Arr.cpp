@@ -125,6 +125,47 @@ void Arr::one_flow(){
 	std::cout << "\n Время выполнения в одном потоке: " << time << std::endl;
 }
 
+int Arr::flow(std::vector<int> arr)
+{
+	int sum = 0;
+	for (int i = 0; i != arr.size(); i++) {
+		sum += arr[i];
+	}
+	
+	return sum;
+}
+
+void Arr::multi_flow(){
+	clock_t start, end;
+	double time = 0;
+	start = clock();
+
+	int sum = 0;
+	std::vector<std::thread> threads;
+	std::vector<int> results(_M); // Вектор для хранения результатов
+
+	for (int i = 0; i != _M; i++) {
+		// Используем лямбда-функцию для передачи аргументов в поток
+		threads.push_back(std::thread([this, i, &results]() {
+			results[i] = flow(_arr_mass[i]);
+			}));
+	}
+
+	for (auto& thread : threads) {
+		thread.join();
+	}
+	// Суммируем результаты
+	for (int i = 0; i != _M; i++) {
+		sum += results[i];
+	}
+
+
+	end = clock();
+	time = ((double)end - (double)start) / ((double)CLOCKS_PER_SEC);
+	std::cout << "\n Сумма всех членов составляет - " << sum << std::endl << " ";
+	std::cout << "\n Время выполнения в " << _M <<" потоке: " << time << std::endl;
+}
+
 void Arr::pause(){
 	std::this_thread::sleep_for(std::chrono::seconds(2));
 }
